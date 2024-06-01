@@ -34,6 +34,7 @@ html {
     box-shadow: 0 0 20px #cccccc4a;
     display: flex;
     justify-content: space-between;
+    z-index: 1000;
 }
 
 .top-profilegroup {
@@ -142,6 +143,51 @@ html {
     box-shadow: 0px 0px 50px #1100000e;
     display: grid;
     grid-template-columns: min-content auto auto auto auto auto auto auto;
+    position: relative;
+    z-index: 2;
+}
+
+.confirm-buttons {
+    position: fixed;
+    border-radius: 5px;
+    bottom: 10px;
+    left: 45%;
+    font-size: 25px;
+    font-weight: bold;
+    color: #cccccc4a;
+    box-shadow: 0 2px 15px #cccccc;
+    padding: 10px;
+    background-color: white;
+    padding: 20px 30px 10px 40px;
+    border-radius: 20px;
+    display: flex;
+    visibility: hidden;
+    margin: 0;
+    column-gap: 20px;
+}
+    
+.confirm-buttons *{
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    transition: box-shadow 0.2s, translate 0.2s;
+    border: 2px solid #cccccc;
+}
+
+.confirm-buttons *:nth-child(1){
+    color: white;
+    background-color: #3153c2;
+    border: 0;
+}
+
+.confirm-buttons div:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 10px #a09a9a;
+}
+
+.confirm-buttons *:active{
+    background-color: #6184f6;
+    color: white;
 }
 
 .records-group *{
@@ -152,6 +198,28 @@ html {
 
 .records-row {
     border-bottom: 1px solid #00000099;
+}
+
+.records-row input[type="text"],
+.records-row input[type="date"]{
+    margin-top: 20px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+}
+
+.records-row input[type="file"]{
+    border: 1px solid #cccccc;
+    opacity: 0;
+}
+
+.records-row select{
+    margin-top: 20px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
 }
 
 .records-header {
@@ -166,8 +234,8 @@ html {
     justify-items: center;
 }
 
-.confirmselection-icon {
-    color: #00000099;
+.selectall-icon {
+    color: #cccccce2;
     background-color: transparent;
     font-weight: bold;
     font-size: 20px;
@@ -176,14 +244,15 @@ html {
     border-radius: 20px;
     text-align: center;
     transition: background-color 0.2s;
+    border: 2px solid #cccccc;
     visibility: hidden;
 }
 
-.confirmselection-icon:hover {
+.selectall-icon:hover {
     cursor: pointer;
 }
 
-.confirmselection-icon:active {
+.selectall-icon:active {
     background-color: #cccccc8a;
 }
 

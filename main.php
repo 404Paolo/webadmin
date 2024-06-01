@@ -46,8 +46,12 @@
     </div>
     <div class="mid-section">
         <div class="records-group">
+            <div class="confirm-buttons">
+                <div>Confirm</div>
+                <div onclick="makeHidden()">Cancel</div>
+            </div>
             <div class="records-header" style="padding: 5px 0px 0px 10px;">
-                <div class="confirmselection-icon">&check;</div>
+                <div class="selectall-icon" onclick="toggleSelectAll()">&check;</div>
             </div>
             <div class="records-header">Photo</div>
             <div class="records-header">Full Name</div>
@@ -57,7 +61,7 @@
             <div class="records-header">Created On</div>
             <div class="records-header" style="position: relative">
                 Created By
-                <button class="button-options" onclick="toggleVisibility('.dialog-options')" title="Options">&#8942;</button>
+                <button class="button-options" onclick="toggleVisibility('.dialog-options')">&#8942;</button>
                 <table class="dialog-options">
                     <colgroup>
                         <col style="width: 20%;">
@@ -65,36 +69,55 @@
                     </colgroup>
                     <tr>
                         <th style="border-radius: 20px 0 0 0">&plus;</th>
-                        <th style="border-radius: 0 20px 0 0" onclick="startSelection()">Add user</th>
+                        <th style="border-radius: 0 20px 0 0">Add user</th>
                     </tr>
-                    <tr>
+                    <tr  onclick="toggleSelectionMode(); makeVisible('.confirm-buttons')">
                         <th>&minus;</th>
                         <th>Remove users</th>
                     </tr>
-                    <tr>
+                    <tr  onclick="toggleEditingMode(); makeVisible('.confirm-buttons')">
                         <th>&#x270E;</th>
                         <th>Edit users info</th>
                     </tr>
-                    <tr>
+                    <tr onclick="toggleSelectionMode(); makeVisible('.confirm-buttons')">
                         <th>&check;</th>
                         <th>Grant user privilege</th>
                     </tr>
-                    <tr>
+                    <tr onclick="toggleSelectionMode(); makeVisible('.confirm-buttons')">
                         <th style="border-radius: 0 0 0 20px">&Cross;</th>
                         <th style="border-radius: 0 0 20px 0">Revoke user privilege</th>
                     </tr>
                 </table>
             </div>
+                <div></div>
+                <div class="records-row">
+                    <label for="photo-upload">
+                        <i>text</i>
+                        <input type="file" class="circle-small" id="photo-upload">
+                    </label>
+                </div>
+                <div class="records-row"> <input type="text" placeholder="Full name"></div>
+                <div class="records-row"> <input type="text" placeholder="Email"></div>
+                <div class="records-row">
+                    <select name="Branch" id="Branch">
+                        <option value="Fairview">Fairview</option>
+                        <option value="Camarin">Camarin</option>
+                        <option value="SJDM">SJDM</option>
+                    </select>
+                </div>
+                <div class="records-row"> <input type="text" placeholder="Role"></div>
+                <div class="records-row"> <input type="date"></div>
+                <div class="records-row"> Juan Dela Cruz</div>
             <?php
-            for($i = 0; $i < 3; $i++){?>
-                <div class="records-row selection-icon" id="selection<?php echo $i?>" onclick="toggleSelection('#selection<?php echo $i?>')">&cir;</div>
+            for($i = 0; $i < 30; $i++){?>
+                <div class="records-row selection-icon" id="selection<?php echo $i?>" onclick="toggleSelectionButton('#selection<?php echo $i?>')">&cir;</div>
                 <div class="records-row"> <img class="circle-small" src="assets/ic_profpic.webp"></div>
-                <div class="records-row"> Christian Paolo Reyes</div>
-                <div class="records-row"> cpaolo852@gmail.com</div>
-                <div class="records-row"> Fairview</div>
-                <div class="records-row"> Manager</div>
-                <div class="records-row"> May 10, 2024</div>
-                <div class="records-row"> Juan Dela Cruz</div><?php
+                <div class="records-row text-editable"> Christian Paolo Reyes</div>
+                <div class="records-row text-editable"> cpaolo852@gmail.com</div>
+                <div class="records-row text-editable"> Fairview</div>
+                <div class="records-row text-editable"> Manager</div>
+                <div class="records-row text-editable"> May 10, 2024</div>
+                <div class="records-row text-editable"> Juan Dela Cruz</div><?php
             }?>
         </div>
     </div>
