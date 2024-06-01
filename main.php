@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="main_style.css">
+    <script src="main_script.js" defer></script>
     <title>Web Admin</title>
 </head>
 <body class=".main">
@@ -47,7 +47,7 @@
     <div class="mid-section">
         <div class="records-group">
             <div class="confirm-buttons">
-                <div>Confirm</div>
+                <div onclick="alert('Operation completed'); makeHidden()">Confirm</div>
                 <div onclick="makeHidden()">Cancel</div>
             </div>
             <div class="records-header" style="padding: 5px 0px 0px 10px;">
@@ -67,7 +67,7 @@
                         <col style="width: 20%;">
                         <col style="width: 80%;">
                     </colgroup>
-                    <tr>
+                    <tr onclick="toggleAddMode(); makeVisible('.confirm-buttons')">
                         <th style="border-radius: 20px 0 0 0">&plus;</th>
                         <th style="border-radius: 0 20px 0 0">Add user</th>
                     </tr>
@@ -89,25 +89,20 @@
                     </tr>
                 </table>
             </div>
-                <div></div>
-                <div class="records-row">
-                    <label for="photo-upload">
-                        <i>text</i>
-                        <input type="file" class="circle-small" id="photo-upload">
-                    </label>
-                </div>
-                <div class="records-row"> <input type="text" placeholder="Full name"></div>
-                <div class="records-row"> <input type="text" placeholder="Email"></div>
-                <div class="records-row">
+                <div class="add"></div>
+                <div class="records-row add"> <img class="circle-small" src="assets/ic_profpic.webp"></div>
+                <div class="records-row add"> <input type="text" placeholder="Full name"></div>
+                <div class="records-row add"> <input type="text" placeholder="Email"></div>
+                <div class="records-row add">
                     <select name="Branch" id="Branch">
                         <option value="Fairview">Fairview</option>
                         <option value="Camarin">Camarin</option>
                         <option value="SJDM">SJDM</option>
                     </select>
                 </div>
-                <div class="records-row"> <input type="text" placeholder="Role"></div>
-                <div class="records-row"> <input type="date"></div>
-                <div class="records-row"> Juan Dela Cruz</div>
+                <div class="records-row add"> <input type="text" placeholder="Role"></div>
+                <div class="records-row add"> <input type="date"></div>
+                <div class="records-row add"> Juan Dela Cruz</div>
             <?php
             for($i = 0; $i < 30; $i++){?>
                 <div class="records-row selection-icon" id="selection<?php echo $i?>" onclick="toggleSelectionButton('#selection<?php echo $i?>')">&cir;</div>
